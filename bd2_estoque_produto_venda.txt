@@ -1,0 +1,45 @@
+CREATE TABLE estoque(
+  id_estoque INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  descricaoEstoque VARCHAR(200) NOT NULL,
+  preco DECIMAL(7,2) NOT NULL,
+  quantidade DECIMAL(7,2) NOT NULL,
+  dt DATETIME NOT NULL,
+  PRIMARY KEY (id_estoque),
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
+) DEFAULT CHARSET = utf8;
+
+
+CREATE TABLE servico(
+  id_servico INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  descricaoservico VARCHAR(200) NOT NULL,
+  precoservico DECIMAL(7,2) NOT NULL,
+  quantidadeservico DECIMAL(7,2) NOT NULL,
+  dt DATETIME NOT NULL,
+  PRIMARY KEY (id_servico),
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
+) DEFAULT CHARSET = utf8;
+
+
+CREATE TABLE vendaservico (
+  id_venda INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  id_mei INT NOT NULL,
+  id_cliente INT NOT NULL,
+  id_servico INT NOT NULL,
+  descricaoservico VARCHAR(200) NOT NULL,
+  valorunitario DECIMAL(7,2) NOT NULL,
+  qtd DECIMAL(7,2) NOT NULL,
+  nomecliente VARCHAR(200) NOT NULL,
+  formapgto VARCHAR(50) NOT NULL,
+  dtvenda DATETIME NOT NULL,  
+  valortotal DECIMAL(7,2) NOT NULL,
+  PRIMARY KEY (id_venda),
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
+  FOREIGN KEY (id_mei) REFERENCES mei(id_mei),
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+  FOREIGN KEY (id_servico) REFERENCES servico(id_servico)
+) DEFAULT CHARSET = utf8;
+
+INSERT INTO vendaservico (id_usuario, id_mei, id_cliente, id_servico, descricaoservico, valorunitario, qtd, nomecliente, formapgto, dtvenda, valortotal) VALUES ('1','1', '2','2','Cortar cabelo', '20.00', '2.00', 'Sebastião', 'Dinheiro', NOW(), '40.00');
