@@ -4,7 +4,7 @@ include('Conexao.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+<head>  
 <title>Go! MEI - Cadastrar Compra</title>	
 <style type="text/css">
       .carregando{
@@ -84,7 +84,7 @@ include('Conexao.php');
 
   <div class="col-6 col-s-9">
     <h2>Cadastrar Venda</h2>
-    <a href="PesquisaCompra.php"> Pesquisar Compras </a>
+    <a href="PesquisaVendaServico.php"> Pesquisar Vendas de Serviços </a>
     <?php
       if( isset($_SESSION['msg']) ) {
         echo $_SESSION['msg'];
@@ -93,8 +93,9 @@ include('Conexao.php');
     ?>
 
     <?php
+
       $idusuario = $_SESSION['id_usuario'];    
-      $ver = 2; 
+     // $ver = 2; 
         
     ?>
 
@@ -153,20 +154,6 @@ include('Conexao.php');
        </div>
     </form>
 
-    <?php
-
-      $SendPesqUser = filter_input(INPUT_POST, 'SendPesqUser', FILTER_SANITIZE_STRING);
-
-      if ($SendPesqUser) {
-        $servico = $_POST['id_categoria'];
-        $qntd = $_POST['quantidade'];
-        $vt = $_POST['result'];
-      }
-
-
-
-    ?>
-
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("jquery", "1.4.2");
@@ -203,8 +190,9 @@ include('Conexao.php');
 
     </div>
 
-<div class="col-3 col-s-12">
+<!--<div class="col-3 col-s-12">
     <div class="container">
+      <form action="proc_cad_vendas_servico.php" method="POST">
       <table id="customers">
         <tr>
             <th>Serviço</th>
@@ -213,6 +201,8 @@ include('Conexao.php');
           </tr>
 
           <?php
+
+          /*
 
           //verificando se clicou no botao
         if ($SendPesqUser) {
@@ -236,17 +226,33 @@ include('Conexao.php');
               ";
 
             }
+
+            */
         
           ?>
 
       
     
       </table>
-      <form action="proc_cad_venda_servico.php" method="POST">
+      
         <button type="submit" name="enviar" value="salvar">FINALIZAR</button>
       </form>
     </div>
-  </div>
+  </div>-->
+
+</div>
+
+
+  <!--<div class="col-3 col-s-12">
+    <div class="aside">
+      <h2>What?</h2>
+      <p>Chania is a city on the island of Crete.</p>
+      <h2>Where?</h2>
+      <p>Crete is a Greek island in the Mediterranean Sea.</p>
+      <h2>How?</h2>
+      <p>You can reach Chania airport from all over Europe.</p>
+    </div>
+  </div>-->
 
 </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03-Dez-2019 às 22:49
+-- Generation Time: 04-Dez-2019 às 03:14
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -179,7 +179,6 @@ CREATE TABLE `fornecedor` (
 INSERT INTO `fornecedor` (`id_fornecedor`, `id_usuario`, `nome_razaosocial`, `cpf_cnpj`, `inscricaoestadual`, `inscricaomunicipal`, `email`, `tel`, `cel`, `sexo`, `rg`, `nome_mae`, `nome_pai`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `uf`) VALUES
 (4, 1, 'Limpe mais - itens de limpeza', '753159/0001', '753159/0001SP', '753159/0001-78', 'queijomolico@gmail.com', '11 4678-7894', '11 9 4545-7841', '', '', '', '', '05489-158', '', '1234', '', '', 'SP'),
 (2, 2, 'NestlÃ¨', '12348979/0001-25', '1234589/0001-25SP', '1234100/000-25SP', 'nestle@gmail.com', '11 2678-7812', '11 9 7845-7812', '', '', '', '', '02548-458', 'Rua CipÃ³', '98', 'Jd. Floresta', 'SÃ£o Caetano do Sul', 'SP'),
-(3, 2, 'Rafaela Embalagens para alimentos', '2156489/0001', '2156489/0001SP', '2156489/0001-89', 'rafaelaembalagens@gmail.com', '11 5878-7894', '11 9 7845-7845', '', '', '', '', '05478-789', 'Rua PanamÃ¡', '874', 'Ãgua Fria', 'Santo AndrÃ©', 'SP'),
 (12, 1, 'Microsoft', '12348979/0001', '123456100/0001', '21234567890SP', 'microsoft@gmail.com', '11 4578-7894', '11 9 7845-2312', '', '', '', '', '04789-480', 'Av. Brigadeiro LuÃ­s AntÃ´nio', '5784', 'Pinheiros', 'SÃ£o Paulo', 'SP'),
 (6, 3, 'Forn de farinha de trigo', '12348979/0001', '123456782100', '123456782100SP', 'farinhadetrigo@gmail.com', '11 2678-7894', '11 9 7845-7845', 'F', '21.600.091-9', 'Dona Josefa', 'Seu Marinho', '06812-154', 'Rua BavÃ¡ria', '458', 'Jd. dos Perfumes', 'Porto Alegre', 'RS'),
 (7, 3, 'Forn de aÃ§Ãºcar cristal', '12348979/0001-25', '1234561000/0001', '123456100/0001SP', 'acucarcristal@gmail.com', '11 2678-0094', '11 97898-7894', 'M', '789435498-1', 'Maria Doce', 'JoÃ£o das Claras Neve', '02598-741', 'Rua Sancho PanÃ§a', '789', 'Jd. Gaivotas', 'SÃ£o Paulo', 'SP'),
@@ -324,7 +323,7 @@ INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `email_usuario`, `senha_usu
 --
 
 CREATE TABLE `vendaservico` (
-  `id_venda` int(11) NOT NULL,
+  `id_venda_servico` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_mei` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
@@ -335,16 +334,20 @@ CREATE TABLE `vendaservico` (
   `nomecliente` varchar(200) NOT NULL,
   `formapgto` varchar(50) NOT NULL,
   `dtvenda` datetime NOT NULL,
-  `valortotal` decimal(7,2) NOT NULL
+  `valortotal` decimal(7,2) NOT NULL,
+  `situacao` varchar(12) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `vendaservico`
 --
 
-INSERT INTO `vendaservico` (`id_venda`, `id_usuario`, `id_mei`, `id_cliente`, `id_servico`, `descricaoservico`, `valorunitario`, `qtd`, `nomecliente`, `formapgto`, `dtvenda`, `valortotal`) VALUES
-(1, 1, 1, 2, 2, 'Cortar cabelo', '20.00', '2.00', 'Sebastião', 'Dinheiro', '2019-12-02 17:33:29', '40.00'),
-(2, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '5.00', 'LucrÃ©cia', 'dinheiro', '2019-12-02 18:34:33', '100.00');
+INSERT INTO `vendaservico` (`id_venda_servico`, `id_usuario`, `id_mei`, `id_cliente`, `id_servico`, `descricaoservico`, `valorunitario`, `qtd`, `nomecliente`, `formapgto`, `dtvenda`, `valortotal`, `situacao`) VALUES
+(1, 1, 1, 2, 2, 'Cortar cabelo', '20.00', '2.00', 'Sebastião', 'Dinheiro', '2019-12-02 17:33:29', '40.00', 'CANCELADA'),
+(2, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '5.00', 'LucrÃ©cia', 'dinheiro', '2019-12-02 18:34:33', '100.00', 'CANCELADA'),
+(3, 1, 1, 5, 1, 'Cortar grama', '20.00', '5.00', 'MarÃ­lia', 'dinheiro', '2019-12-03 22:38:56', '100.00', 'REALIZADA'),
+(4, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '4.00', 'LucrÃ©cia', 'dinheiro', '2019-12-03 22:58:30', '80.00', 'REALIZADA'),
+(5, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '5.00', 'LucrÃ©cia', 'cartao', '2019-12-03 23:33:27', '100.00', 'REALIZADA');
 
 --
 -- Indexes for dumped tables
@@ -420,7 +423,7 @@ ALTER TABLE `usuario`
 -- Indexes for table `vendaservico`
 --
 ALTER TABLE `vendaservico`
-  ADD PRIMARY KEY (`id_venda`),
+  ADD PRIMARY KEY (`id_venda_servico`),
   ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_mei` (`id_mei`),
   ADD KEY `id_cliente` (`id_cliente`),
@@ -479,7 +482,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `vendaservico`
 --
 ALTER TABLE `vendaservico`
-  MODIFY `id_venda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `id_venda_servico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -13,10 +13,8 @@ include("Conexao.php");
 <link rel="stylesheet" type="text/css" href="styles/search.css"/>
 <link rel="stylesheet" type="text/css" href="styles/button.css"/>
 </head>
-<
-<body style="background-color: black">
-	<div style='text-align: center; margin-top: 100px'><img border="0" height="227" src="http://1.bp.blogspot.com/-VHCN5ztcLbA/TaJKmMqMDTI/AAAAAAAAAnA/lAZnPq68Ctk/s400/manutencao.jpg" width="400" /></div>
-<div style='display:none'>
+
+<body>
 
 <div class="header">
 	<div class="conexao">
@@ -80,9 +78,9 @@ include("Conexao.php");
   </div>
 
   <div class="col-6 col-s-9">
-  <h1>Vendas</h1>
-  <p><b>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa. </b></p><br>
-  <a href="CadVenda.php" class="button"><b>+ Adicionar</b></a>
+  <h1>Vendas de Serviço</h1>
+  <p><b></b></p><br>
+  <a href="CadVendaServico.php" class="button"><b>Adicionar</b></a>
   <hr>
 
   <?php
@@ -96,7 +94,7 @@ include("Conexao.php");
 
  <form action="" method="POST"> 		
 
-			<p><input type=text name=produto_servico placeholder="Digite o nome do produto/estoque ou serviço" size="100" >
+			<p><input type=text name=venda_servico placeholder="Digite o serviço vendido" size="100" >
 			<button type="submit"class="button" name="SendPesqUser" value="Pesquisar"><b>Pesquisar</b></button></p>  
 
 		</form>	<br>
@@ -107,8 +105,8 @@ include("Conexao.php");
 
 		  //verificando se clicou no botao
 		  if ($SendPesqUser) {
-		  	$produto_servico = filter_input(INPUT_POST,'produto_servico', FILTER_SANITIZE_STRING);
-		  	$result_venda = "SELECT * FROM venda WHERE produto_servico LIKE '%$produto_servico%'";
+		  	$venda_servico = filter_input(INPUT_POST,'venda_servico', FILTER_SANITIZE_STRING);
+		  	$result_venda = "SELECT * FROM vendaservico WHERE descricaoservico LIKE '%$venda_servico%'";
 		  	$resultado_venda = mysqli_query($conexao, $result_venda);
 		?>
 
@@ -121,9 +119,10 @@ include("Conexao.php");
 						<th>Data da Venda</th>
 						<th>Quantidade</th>
 						<th>Valor Total</th>
-						<th>Valor Recebido</th>	
-						<th>Troco</th>
-						<th>Forma de Pagamento</th>					
+						<th>Forma de Pagamento</th>	
+						<th>Status</th>
+						<th></th>
+									
 					</tr>
 
 
@@ -135,18 +134,15 @@ include("Conexao.php");
 
 						//CONTINUAR A TROCAR POR VENDA A PARTIR DAQUI!
 							"<tr>
-								<td>" . $row_venda['id_fornecedor'] . "</td>
-								<td>" . $row_venda['razaosocial'] . "</td>
-								<td>" . $row_venda['inscricaoestadual'] . "</td>
-								<td>" . $row_venda['inscricaomunicipal'] . "</td>
+								<td>" . $row_venda['id_venda_servico'] . "</td>
+								<td>" . $row_venda['descricaoservico'] . "</td>
+								<td>" . $row_venda['dtvenda'] . "</td>
+								<td>" . $row_venda['qtd'] . "</td>
+								<td>" . $row_venda['valortotal'] . "</td>
+								<td>" . $row_venda['formapgto'] . "</td>
+								<td>" . $row_venda['situacao'] . "</td>
 
-								<td>" . $row_venda['id_fornecedor'] . "</td>
-								<td>" . $row_venda['razaosocial'] . "</td>
-								<td>" . $row_venda['inscricaoestadual'] . "</td>
-								<td>" . $row_venda['inscricaomunicipal'] . "</td>
-
-								<td><a href='edit_fornecedor.php?id=" . $row_venda['id_fornecedor'] . "'>Editar</a></td>
-								<td><a href='proc_apagar_fornecedor.php?id=" . $row_venda['id_fornecedor'] . "'>Apagar</a></td>
+								<td><a href='proc_cancelar_venda_servico.php?id=" . $row_venda['id_venda_servico'] . "'>Cancelar</a></td>
 							</tr>";
 		  			}
 			}
@@ -156,9 +152,25 @@ include("Conexao.php");
 				<br><br>
 				<br><br>
 
-  <div class="footer">
+ </div>
+
+
+  <!--<div class="col-3 col-s-12">
+    <div class="aside">
+      <h2>What?</h2>
+      <p>Chania is a city on the island of Crete.</p>
+      <h2>Where?</h2>
+      <p>Crete is a Greek island in the Mediterranean Sea.</p>
+      <h2>How?</h2>
+      <p>You can reach Chania airport from all over Europe.</p>
+    </div>
+  </div>-->
+
+</div>
+
+<div class="footer">
   <p>Copyright © 2019 Go! MEI</p>
-  </div>
+</div>
 
 </body>
 </html>

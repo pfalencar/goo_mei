@@ -54,7 +54,7 @@ echo "valor total: $result <br>";
 
 
 
-$result_venda_servico = "INSERT INTO vendaservico (id_usuario, id_mei, id_cliente, id_servico, descricaoservico, valorunitario, qtd, nomecliente, formapgto, dtvenda, valortotal) VALUES ('$idusuario','$idmei', '$cliente', '$id_categoria','$descricaoservico', '$id_sub_categoria2', '$quantidade', '$nomecliente', '$pagamento', NOW(), '$result');";
+$result_venda_servico = "INSERT INTO vendaservico (id_usuario, id_mei, id_cliente, id_servico, descricaoservico, valorunitario, qtd, nomecliente, formapgto, dtvenda, valortotal,situacao) VALUES ('$idusuario','$idmei', '$cliente', '$id_categoria','$descricaoservico', '$id_sub_categoria2', '$quantidade', '$nomecliente', '$pagamento', NOW(), '$result','REALIZADA');";
 
 $resultado_venda_servico = mysqli_query($conexao, $result_venda_servico);
 
