@@ -127,12 +127,12 @@ include('Conexao.php');
         ?>
 		
 				<br><br>
-				<p>Início do contrato: <input type=date name=iniciocontrato min="2000-01-01" max="2030-12-31"></p>
-				<p>Fim do  contrato: <input type=date name=fimcontrato min="2000-01-01" max="2030-12-31"></p>
-				<p>Horário de serviço: <input type=text name=horarioservico></p>
-				<p>Valor/Hora: <input type=text name=valorhora></p>
-				<p>Data de Pagamento: <input type=text name=dtpagamento></p>
-				<p>Valor eo Pagamento: <input type=text name=valorpagamento></p>
+				<p>Início do contrato: <input type=date name=iniciocontrato min="2000-01-01" max="2030-12-31" required="required"></p>
+				<p>Fim do  contrato: <input type=date name=fimcontrato min="2000-01-01" max="2030-12-31" required="required"></p>
+				<p>Horário de serviço: <input type=text name=horarioservico placeholder="Ex. 8 as 18" required="required"></p>
+				<p>Valor/Hora: <input type=text name=valorhora required="required"></p>
+				<p>Data de Pagamento: <input type=text name=dtpagamento placeholder="Ex. Quinto dia util" required="required"></p>
+				<p>Valor eo Pagamento: <input type=text name=valorpagamento required="required"></p>
 				<br><br>
 			    <hr>
        <button type="submit" class="registerbtn"  value="Salvar">Salvar</button>

@@ -95,35 +95,35 @@ session_start();
 			  <input type="hidden" name=codcliente></p>
 
 			  <label>Nome: </label>
-			  <input type="text" name="nome" required><br><br>
+			  <input type="text" name="nome" minlength="5" maxlength="40" required><br><br>
 			
 			  <label>CPF: </label>
-			  <input type="text" name="cpf" required><br><br>
+			  <input type="text" name="cpf" minlength="11" maxlength="11" required><br><br>
 
 			  <label>E-mail: </label>
-			  <input type="email" name="email" required><br><br>
+			  <input type="email" name="email" maxlength="50" required><br><br>
 
 			  <label>Telefone: </label>
-			  <input type="text" name="telefone"><br><br>
+			  <input type="text" name="telefone" minlength="10" maxlength="10"><br><br>
 
 			  <label>Celular: </label>
-			  <input type="text" name="celular" required><br><br>
+			  <input type="text" name="celular" minlength="11" maxlength="11" required><br><br>
 
 			  <label>Sexo: </label>
 			  <input type="radio" name="sexo" value="M"> Masculino
 			  <input type="radio" name="sexo" value="F"> Feminino<br><br>
 
 			  <label>RG: </label>
-			  <input type="text" name="rg"><br><br>
+			  <input type="text" name="rg" minlength="9" maxlength="9"><br><br>
 
 			  <label>Nome da mãe: </label>
-			  <input type="text" name="nomemae" required><br><br>
+			  <input type="text" name="nomemae" maxlength="40" required><br><br>
 
 			  <label>Nome do pai: </label>
-			  <input type="text" name="nomepai"><br><br>
+			  <input type="text" name="nomepai" maxlength="40"><br><br>
 
 			  <label>CEP: </label>
-			  <input type=text name=cep required></p>
+			  <input type=text name=cep minlength="8" maxlength="8" required></p>
 
 			  <label>Logradouro: </label>
 			  <input type="text" name="logradouro"><br><br>

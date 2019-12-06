@@ -95,41 +95,41 @@ session_start();
 
 				<input type="hidden" name=codfornecedor></p>
 				<label>Nome/Razão Social:</label>
-          <input type=text name=nome_razaosocial required><br><br>
+          <input type=text name=nome_razaosocial maxlength="50" required><br><br>
 
-        <label>CPF/CNPJ: </label>
-        <input type=text name=cpf_cnpj required></p>
+        <label>CPF ou CNPJ: </label>
+        <input type=text name=cpf_cnpj minlength="11" maxlength="14" required></p>
 
         <label>Inscrição Estadual: </label>
-        <input type=text name=inscricaoestadual required><br><br>
+        <input type=text name=inscricaoestadual minlength="9" maxlength="9" required><br><br>
 
         <label>Inscrição Municipal: </label>
-        <input type=text name=inscricaomunicipal required><br><br>
+        <input type=text name=inscricaomunicipal minlength="11" maxlength="11" required><br><br>
         
         <label>E-mail:</label>
-        <input type=email name=email><br><br>
+        <input type=email maxlength="40" name=email><br><br>
 
         <label>Telefone: </label>
-          <input type="text" name="telefone"><br><br>
+          <input type="text" name="telefone" minlength="10" maxlength="10" required="required"><br><br>
 
         <label>Celular: </label>
-        <input type="text" name="celular" required><br><br>
+        <input type="text" name="celular" minlength="11" maxlength="11" required><br><br>
 
         <label>Sexo: </label>
         <input type="radio" name="sexo" value="M"> Masculino
         <input type="radio" name="sexo" value="F"> Feminino<br><br>
 
         <label>RG: </label>
-        <input type="text" name="rg"><br><br>
+        <input type="text" minlength="9" maxlength="9" name="rg"><br><br>
 
         <label>Nome da mãe: </label>
-        <input type="text" name="nome_mae"><br><br>
+        <input type="text" name="nome_mae" maxlength="40"><br><br>
 
         <label>Nome do pai: </label>
-        <input type="text" name="nome_pai"><br><br>
+        <input type="text" name="nome_pai" maxlength="40"><br><br>
 
         <label>CEP: </label>
-        <input type=text name=cep required></p>
+        <input type=text name=cep required minlength="8" maxlength="8"></p>
 
         <label>Logradouro: </label>
         <input type="text" name="logradouro"><br><br>

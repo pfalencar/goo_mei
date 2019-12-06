@@ -95,35 +95,35 @@ session_start();
         <input type="hidden" name=codfuncionario></p><br>
 
         <label>Nome: </label>
-        <input type="text" name="nome"><br><br>
+        <input type="text" name="nome" maxlength="40" required="required"><br><br>
       
         <label>CPF: </label>
-        <input type="text" name="cpf"><br><br>
+        <input type="text" name="cpf" minlength="11" maxlength="11" required="required"><br><br>
 
         <label>E-mail: </label>
-        <input type="email" name="email"><br><br>
+        <input type="email" maxlength="40" name="email"><br><br>
 
         <label>Telefone: </label>
-        <input type="text" name="telefone"><br><br>
+        <input type="text" name="telefone" minlength="10" maxlength="10" required="required"><br><br>
 
         <label>Celular: </label>
-        <input type="text" name="celular"><br><br>
+        <input type="text" minlength="11" maxlength="11" name="celular"><br><br>
 
         <label>Sexo: </label>
         <input type="radio" name="sexo" value="M"> Masculino
         <input type="radio" name="sexo" value="F"> Feminino<br><br>
 
         <label>RG: </label>
-        <input type="text" name="rg"><br><br>
+        <input type="text" name="rg" minlength="9" maxlength="9" required="required"><br><br>
 
         <label>Nome da mãe: </label>
-        <input type="text" name="nomemae"><br><br>
+        <input type="text" name="nomemae" minlength="6" maxlength="40" required="required"><br><br>
 
         <label>Nome do pai: </label>
-        <input type="text" name="nomepai"><br><br>
+        <input type="text" maxlength="40" name="nomepai"><br><br>
 
         <label>CEP: </label>
-        <input type=text name=cep></p>
+        <input type=text name=cep minlength="8" maxlength="8" required="required"></p>
 
         <label>Logradouro: </label>
         <input type="text" name="logradouro"><br><br>
@@ -180,13 +180,13 @@ session_start();
         <input type="text" name="ctps"><br><br>
 
         <label>PIS/PASEP: </label>
-        <input type="text" name="pispasep"><br><br>
+        <input type="text" minlength="11" name="pispasep"><br><br>
         
         <label>Número da conta: </label>
         <input type="text" name="numeroconta"><br><br>
 
         <label>Tipo de conta: </label>
-        <input type="text" name="tipoconta"><br><br>
+        <input type="text" maxlength="11" name="tipoconta"><br><br>
 
         <label>Nome do banco: </label>
         <input type="text" name="nomebanco"><br><br>

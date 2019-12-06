@@ -85,7 +85,7 @@
 
 						<h2 id="contato">Contato</h2>
 						<p></p>
-						<form action="/action_page.php">
+						<form action="contatoindex.php">
   <div class="container">
 
     <label for="fname">Nome</label>

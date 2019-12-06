@@ -97,13 +97,13 @@ session_start();
 			  <input type="hidden" name=codservico></p><br>
 
 			  <label>Descrição do Serviço: </label>
-			  <input type="text" name="descricaoServico"><br><br>
+			  <input type="text" name="descricaoServico" maxlength="40" required="required"><br><br>
 			
 			  <label>Preco: </label>
-			  <input type="text" name="precoServico"><br><br>
+			  <input type="text" name="precoServico" maxlength="10" required="required"><br><br>
 
 			  <label>Quantidade: </label>
-			  <input type="text" name="quantidadeServico"><br><br>
+			  <input type="text" maxlength="4" name="quantidadeServico"><br><br>
 
 			  <hr>
 				

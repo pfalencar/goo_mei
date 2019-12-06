@@ -94,13 +94,13 @@ session_start();
 			   <input type="hidden" name=codestoque></p><br>
 
         <label>Descrição do Produto: </label>
-        <input type="text" name="descricaoEstoque"><br><br>
+        <input type="text" name="descricaoEstoque" maxlength="40" required="required"><br><br>
       
         <label>Preco: </label>
-        <input type="text" name="preco"><br><br>
+        <input type="text" name="preco" maxlength="10" required="required"><br><br>
 
         <label>Quantidade: </label>
-        <input type="text" name="quantidade"><br><br>
+        <input type="text" name="quantidade" maxlength="4" required="required"><br><br>
 				
 			  <hr>
 	

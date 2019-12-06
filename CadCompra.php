@@ -125,8 +125,8 @@ include('Conexao.php');
            }
         ?>
         
-        <p>Descrição da Compra: <input type=text name=descricaocompra></p>
-        <p>Valor da Compra: <input type=text name=valorcompra></p>
+        <p>Descrição da Compra: <input type=text name=descricaocompra maxlength="40" required="required"></p>
+        <p>Valor da Compra: <input type=text name=valorcompra maxlength="10" required="required"></p>
         
         <hr>
        <button type="submit" class="registerbtn"  value="Salvar">Salvar</button>
