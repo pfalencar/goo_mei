@@ -123,7 +123,7 @@ $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 				<input type=password name=passatual required></p>
 
 			<p>Nova Senha: 
-				<input type=password name=passnova required></p>
+				<input type=password name=passnova minlength="8" required></p>
 
 			  
 		   <button type="submit" class="registerbtn"  value="Salvar">Alterar Senha</button>

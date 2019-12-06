@@ -11,6 +11,7 @@ $dataformat = $data->format('Y-m-d');
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="styles/forms.css"/> -->
 <link rel="stylesheet" type="text/css" href="styles/formContact.css"/>
 <link rel="stylesheet" type="text/css" href="styles/logo.css"/>
 <link rel="stylesheet" type="text/css" href="styles/table.css"/>
@@ -95,6 +96,7 @@ $dataformat = $data->format('Y-m-d');
 
      if(isset($pb)) {
       $datae = $_POST['datae'];
+    
      }
      else
      {
@@ -191,6 +193,81 @@ $dataformat = $data->format('Y-m-d');
 
     </div>  
 
+     <div class="container">
+      <h1>FORNECEDORES  <?php echo $escolhida_date; ?></h1>
+
+
+      <!-- Nº Clientes total -->
+
+         <?php 
+      
+        $querynfornecedor = ("SELECT id_fornecedor FROM fornecedor WHERE id_usuario = '$idusuario' ORDER BY id_fornecedor");
+
+          if($result_fornecedor = $conexao->query($querynfornecedor)) {
+            $tfornecedor = $result_fornecedor->num_rows;
+
+          }
+          else
+          {
+            $tfornecedor = 01;
+          }
+
+      
+      ?>
+
+      <!-- Nº Clientes add diario -->
+
+      <?php 
+      
+        $queryaddfornecedores = ("SELECT id_fornecedor FROM fornecedor WHERE id_usuario = '$idusuario' AND dt = '$datae' ORDER BY id_fornecedor");
+
+          if($result_add_fornecedores = $conexao->query($queryaddfornecedores)) {
+            $taddfornecedores = $result_add_fornecedores->num_rows;
+
+          }
+          else
+          {
+            $taddfornecedores = 0;
+          }  
+
+           
+      ?>
+
+
+      <!-- Valor total das vendas -->
+
+      <?php
+
+      /*
+        $valortotalvendas = ("SELECT SUM(valor) AS resultado FROM tb_vendas WHERE dia = '$dataformat' AND situacao = 'REALIZADA'");
+
+          if ($totalvalorvendas = $conexao->query($valortotalvendas)) {
+            $tvlrvendas = $totalvalorvendas->fetch_assoc();
+          }
+          else 
+          {
+            $tvlrvendas = 0;
+          }  
+          */
+          
+      ?>
+
+        <table id="customers">
+  <tr>
+   <th>Total de Fornecedores</th>
+    <th>Adicionados Hoje</th>
+  
+  </tr>
+  <tr>
+    <td><STRONG><?php printf("%d", $tfornecedor); ?></STRONG></td>
+    <td><STRONG><?php printf("%d", $taddfornecedores); ?></td>
+  </tr>
+ 
+</table>
+
+
+    </div>  
+
     <div class="container">
       <H1>COMPRAS <?php echo $escolhida_date; ?></H1>
 
@@ -201,7 +278,7 @@ $dataformat = $data->format('Y-m-d');
         $querycompras = ("SELECT id_compra FROM compra WHERE id_usuario = '$idusuario' ORDER BY id_compra");
 
           if($result_compras = $conexao->query($querycompras)) {
-            $tcompras = $result_compras->fetch_assoc();
+            $tcompras = $result_compras->num_rows;
           }
           else
           {
@@ -218,7 +295,7 @@ $dataformat = $data->format('Y-m-d');
        $queryaddcompras = ("SELECT id_compra FROM compra WHERE id_usuario = '$idusuario' AND dtcompra = '$datae' ORDER BY id_compra");
 
           if($result_add_compras = $conexao->query($queryaddcompras)) {
-            $taddcompras = $result_add_compras->fetch_assoc();
+            $taddcompras = $result_add_compras->num_rows;
           }
           else
           {
@@ -263,85 +340,178 @@ $dataformat = $data->format('Y-m-d');
 
     </div>  
 
-    <!-- <div class="container"> 
-      <H1>CLIENTES <?php echo $escolhida_date; ?></H1>  
+    <div class="container"> 
+      <H1>VENDAS DE SERVIÇOS <?php echo $escolhida_date; ?></H1>  
 
-       Nº CLientes cadastrados diario 
 
       <?php 
       
-        $ndeclientescadastrados = ("SELECT id_cliente FROM cliente WHERE id_usuario = '$idusuario' AND dt = '$datae' ORDER BY id_cliente");
+        $querytotalvendasservico = ("SELECT id_venda_servico FROM vendaservico WHERE id_usuario = '$idusuario' AND dtvenda = '$datae' ORDER BY id_venda_servico");
 
-          if($nclientescad = $conexao->query($ndeclientescadastrados)) {
-            $clicadastrados = $nclientescad->num_rows;
+          if($result_total_vendas_servico = $conexao->query($querytotalvendasservico)) {
+            $tvendasservico = $result_total_vendas_servico->num_rows;
 
           }
           else
           {
-            $clicadastrados = 01;
+            $tvendasservico = 01;
           }
 
       
       ?>
 
-       Nº Clientes Excluidos diario 
-
       <?php 
       
-        $ndeclientesexcluidos = ("SELECT id_cliente FROM cliente WHERE id_usuario = '$idusuario' AND dt = '$datae' AND situacao = 'EXCLUIDO' ORDER BY id_cliente");
+        $querycanceladasvendasservico = ("SELECT id_venda_servico FROM vendaservico WHERE id_usuario = '$idusuario' AND dtvenda = '$datae' AND situacao = 'CANCELADA' ORDER BY id_venda_servico");
 
-          if($nclientesexc = $conexao->query($ndeclientesexcluidos)) {
-            $cliexcluidos = $nclientesexc->num_rows;
+          if($result_canceladas_vendas_servico = $conexao->query($querycanceladasvendasservico)) {
+            $tcanceladasvendasservico = $result_canceladas_vendas_servico->num_rows;
 
           }
           else
           {
-            $cliexcluidos = 0100;
+            $tcanceladasvendasservico = 0100;
           }
 
       
       ?>
 
-
-       Nº de produtos em estoque 
 
       <?php
 
-      $tdeclientescadastrados = ("SELECT id_cliente FROM cliente WHERE id_usuario = '$idusuario' ORDER BY id_cliente");
+      $queryrealizadasvendasservico = ("SELECT id_venda_servico FROM vendaservico WHERE id_usuario = '$idusuario' AND dtvenda = '$datae' AND situacao = 'REALIZADA' ORDER BY id_venda_servico");
 
-          if($tclientescad = $conexao->query($tdeclientescadastrados)) {
-            $clitotal = $tclientescad->num_rows;
+          if($result_realizadas_vendas_servico = $conexao->query($queryrealizadasvendasservico)) {
+            $trealizadasvendasservico = $result_realizadas_vendas_servico->num_rows;
 
           }
           else
           {
-            $clitotal = 01;
+            $trealizadasvendasservico = 01;
           }
+      
+      ?>
 
-          $clitotals = $clitotal - $cliexcluidos;
+      <?php
+
+      $queryvalorvendas = ("SELECT SUM(valortotal) AS resultado FROM vendaservico WHERE dtvenda = '$datae' AND id_usuario = '$idusuario' AND situacao='REALIZADA'");
+
+          if ($result_valor_vendas = $conexao->query($queryvalorvendas)) {
+            $tvalorvendas = $result_valor_vendas->fetch_assoc();
+          }
+          else 
+          {
+            $tvalorvendas = 0;
+          }  
       
       ?>
 
                    <table id="customers">
   <tr>
-    <th>Adicionados</th>
-    <th>Excluídos</th>
-    <th>Total de Clientes</th>
+    <th>Realizadas</th>
+    <th>Canceladas</th>
+    <th>Total de Vendas</th>
+    <th>Recebido</th>
   
   </tr>
   <tr>
-    <td><?php  printf("%d", $clicadastrados); ?></td>
-    <td><?php  printf("%d", $cliexcluidos); ?></td>
-    <td><?php  printf("%d", $clitotals); ?></td>
+    <td><?php  printf("%d", $trealizadasvendasservico); ?></td>
+    <td><?php  printf("%d", $tcanceladasvendasservico); ?></td>
+    <td><?php  printf("%d", $tvendasservico); ?></td>
+    <td>R$ <?php  printf("%d", $tvalorvendas['resultado']); ?></td>
+  </tr> 
+  
+</table>
+
+ </div>
+
+ <div class="container"> 
+      <H1>VENDAS DE PRODUTOS <?php echo $escolhida_date; ?></H1>  
+
+
+      <?php 
+      
+        $querytotalvendasproduto = ("SELECT id_venda_produto FROM vendaproduto WHERE id_usuario = '$idusuario' AND dtvenda = '$datae' ORDER BY id_venda_produto");
+
+          if($result_total_vendas_produto = $conexao->query($querytotalvendasproduto)) {
+            $tvendasproduto = $result_total_vendas_produto->num_rows;
+
+          }
+          else
+          {
+            $tvendasproduto = 01;
+          }
+
+      
+      ?>
+
+      <?php 
+      
+        $querycanceladasvendasproduto = ("SELECT id_venda_produto FROM vendaproduto WHERE id_usuario = '$idusuario' AND dtvenda = '$datae'AND situacao = 'CANCELADA' ORDER BY id_venda_produto");
+
+          if($result_canceladas_vendas_produto = $conexao->query($querycanceladasvendasproduto)) {
+            $tcanceladasvendasproduto = $result_canceladas_vendas_produto->num_rows;
+
+          }
+          else
+          {
+            $tcanceladasvendasproduto = 0100;
+          }
+
+      
+      ?>
+
+
+      <?php
+
+      $queryrealizadasvendasproduto = ("SELECT id_venda_produto FROM vendaproduto WHERE id_usuario = '$idusuario' AND dtvenda = '$datae' AND situacao = 'REALIZADA' ORDER BY id_venda_produto");
+
+          if($result_realizadas_vendas_produto = $conexao->query($queryrealizadasvendasproduto)) {
+            $trealizadasvendasproduto = $result_realizadas_vendas_produto->num_rows;
+
+          }
+          else
+          {
+            $trealizadasvendasproduto = 01;
+          }
+      
+      ?>
+
+      <?php
+
+      $queryvalorvendasp = ("SELECT SUM(valortotal) AS resultado FROM vendaproduto WHERE dtvenda = '$datae' AND id_usuario = '$idusuario' AND situacao='REALIZADA'");
+
+          if ($result_valor_vendasp = $conexao->query($queryvalorvendasp)) {
+            $tvalorvendasp = $result_valor_vendasp->fetch_assoc();
+          }
+          else 
+          {
+            $tvalorvendasp = 0;
+          }  
+      
+      ?>
+
+                   <table id="customers">
+  <tr>
+    <th>Realizadas</th>
+    <th>Canceladas</th>
+    <th>Total de Vendas</th>
+    <th>Recebido</th>
   
   </tr>
+  <tr>
+    <td><?php  printf("%d", $trealizadasvendasproduto); ?></td>
+    <td><?php  printf("%d", $tcanceladasvendasproduto); ?></td>
+    <td><?php  printf("%d", $tvendasproduto); ?></td>
+    <td>R$ <?php  printf("%d", $tvalorvendasp['resultado']); ?></td>
+  </tr> 
   
 </table>
  
   
-		</div>
+    </div>
 
-    <div class="container">
+    <!--<div class="container">
       <H1>FORNECEDORES <?php echo $escolhida_date; ?></H1>  
 
         Nº Fornecedores cadastrados diario 
@@ -404,6 +574,8 @@ $dataformat = $data->format('Y-m-d');
   </tr>-->
   
 <!-- </table> -->
+
+  </div>
  
   
     <!-- </div>      			 -->

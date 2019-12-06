@@ -117,7 +117,7 @@ include_once("Conexao.php");
 			  <input type="text" name="nomecompleto" required><br><br>
 
 			  <label>Email: </label>
-			  <input type="text" name="email"><br><br>
+			  <input type="email" name="email"><br><br>
 
 			  <label>Razao Social: </label>
 			  <input type="text" name="razaosocial" required><br><br>

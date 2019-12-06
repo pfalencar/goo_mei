@@ -31,7 +31,7 @@ echo "dtpagamento: $dtpagamento <br>";
 echo "valorpagamento: $valorpagamento <br>";
 */
 
-$result_contrato = "INSERT INTO contrato (id_usuario, id_mei, id_funcionario, nomefuncionario, iniciocontrato, fimcontrato, horarioservico, valorhora, dtpagamento, valorpagamento) VALUES ('$idusuario', '$id_mei', '$idfunc', '$nomefuncionario', '$iniciocontrato', '$fimcontrato','$horarioservico','$valorhora','$dtpagamento','$valorpagamento')";
+$result_contrato = "INSERT INTO contrato (id_usuario, id_mei, id_funcionario, nomefuncionario, iniciocontrato, fimcontrato, horarioservico, valorhora, dtpagamento, valorpagamento,dt) VALUES ('$idusuario', '$id_mei', '$idfunc', '$nomefuncionario', '$iniciocontrato', '$fimcontrato','$horarioservico','$valorhora','$dtpagamento','$valorpagamento',NOW())";
 
 $resultado_contrato = mysqli_query($conexao, $result_contrato);
 

@@ -41,7 +41,7 @@ echo "cidade: $cidade <br>";
 echo "uf: $uf <br>";
 */
 
-$result_fornecedor = "INSERT INTO fornecedor (id_usuario, nome_razaosocial, cpf_cnpj, inscricaoestadual, inscricaomunicipal, email, tel, cel, sexo, rg, nome_mae, nome_pai, cep, logradouro, numero, bairro, cidade, uf) VALUES ('$id_usuario', '$nome_razaosocial', '$cpf_cnpj', '$inscricaoestadual', '$inscricaomunicipal', '$email', '$telefone', '$celular', '$sexo', '$rg', '$nomemae', '$nomepai', '$cep', '$logradouro', '$numero', '$bairro', '$cidade', '$uf')";
+$result_fornecedor = "INSERT INTO fornecedor (id_usuario, nome_razaosocial, cpf_cnpj, inscricaoestadual, inscricaomunicipal, email, tel, cel, sexo, rg, nome_mae, nome_pai, cep, logradouro, numero, bairro, cidade, uf,dt) VALUES ('$id_usuario', '$nome_razaosocial', '$cpf_cnpj', '$inscricaoestadual', '$inscricaomunicipal', '$email', '$telefone', '$celular', '$sexo', '$rg', '$nomemae', '$nomepai', '$cep', '$logradouro', '$numero', '$bairro', '$cidade', '$uf',NOW())";
 
 
 $resultado_fornecedor = mysqli_query($conexao, $result_fornecedor);

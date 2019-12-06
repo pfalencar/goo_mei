@@ -101,7 +101,7 @@ session_start();
 			  <input type="text" name="cpf" required><br><br>
 
 			  <label>E-mail: </label>
-			  <input type="text" name="email" required><br><br>
+			  <input type="email" name="email" required><br><br>
 
 			  <label>Telefone: </label>
 			  <input type="text" name="telefone"><br><br>

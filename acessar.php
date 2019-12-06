@@ -37,7 +37,7 @@ session_start();
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Informe o email" name="email" required>
+    <input type="email" placeholder="Informe o email" name="email" required>
 
     <label for="psw"><b>Senha</b></label>
     <input type="password" placeholder="Informe a senha" name="senha" required>
@@ -52,6 +52,9 @@ session_start();
       <a href="cadastro.php"> Não é cadastrado? Cadastre-se! </a>
   </div>
 </form>
+  <br><br>
+  <br><br>
+  <br>
 
   
   </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Dez-2019 às 03:14
+-- Generation Time: 05-Dez-2019 às 02:38
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -45,19 +45,20 @@ CREATE TABLE `cliente` (
   `numero` varchar(10) NOT NULL,
   `bairro` varchar(100) DEFAULT NULL,
   `cidade` varchar(200) DEFAULT NULL,
-  `uf` char(2) DEFAULT NULL
+  `uf` char(2) DEFAULT NULL,
+  `dt` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`id_cliente`, `id_usuario`, `nome`, `cpf`, `email`, `tel`, `cel`, `sexo`, `rg`, `nome_mae`, `nome_pai`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `uf`) VALUES
-(1, 1, 'LucrÃ©cia', '357159789-00', 'lucrecia@gmail.com', '11 2678-7894', '11 9 7845-7845', 'F', '789435498-3', 'Dona LucrÃ©cia', 'Seu SebastiÃ£o', '06812-154', 'Rua Boituva', '456', 'BrÃ¡s', 'Porto RincÃ£o', 'RJ'),
-(2, 1, 'SebastiÃ£o', '123456789-01', 'sebastiao@gmail.com', '11 2678-7894', '11 9 7845-7845', 'M', '789435498-1', 'Dona Maria', 'JosÃ© Roberto', '06812-154', 'Rua Barata Ribeiro', '45', 'Jd. ArtrÃ³podes', 'Bauru', 'SP'),
-(4, 1, 'Zenaide Silva e Silva', '546789123-48', 'zenaide@gmail.com', '11 4567 7894', '11 97875 4587', 'F', '45789135-7', 'Raquel Silva', 'JosÃ© Silva', '054789-789', 'Rua Van Gogh', '789', 'Jd. dos Artistas', 'SÃ£o Paulo', 'AC'),
-(5, 1, 'MarÃ­lia', '357159789-03', 'marilia@gmail.com', '11 4250-7894', '11 9 9978-7845', 'F', '32.455.674-3', 'JanaÃ­na', 'Felisberto', '02540000', 'Rua Mardoqueu', '458', 'Vl. Nova Iorque', 'MarÃ­lia', 'SP'),
-(6, 2, 'Astrovaldo', '357159789-03', 'astro@gmail.com', '11 2678-7894', '11 9 7845-7845', 'M', '37.843.367-2', 'Maria Joana', 'Marcos', '06812-100', 'Rua AraucÃ¡ria', '123', 'Pq.. Bristol', 'SÃ£o Paulo', 'SP');
+INSERT INTO `cliente` (`id_cliente`, `id_usuario`, `nome`, `cpf`, `email`, `tel`, `cel`, `sexo`, `rg`, `nome_mae`, `nome_pai`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `uf`, `dt`) VALUES
+(1, 1, 'LucrÃ©cia', '357159789-00', 'lucrecia@gmail.com', '11 2678-7894', '11 9 7845-7845', 'F', '789435498-3', 'Dona LucrÃ©cia', 'Seu SebastiÃ£o', '06812-154', 'Rua Boituva', '456', 'BrÃ¡s', 'Porto RincÃ£o', 'RJ', NULL),
+(2, 1, 'SebastiÃ£o', '123456789-01', 'sebastiao@gmail.com', '11 2678-7894', '11 9 7845-7845', 'M', '789435498-1', 'Dona Maria', 'JosÃ© Roberto', '06812-154', 'Rua Barata Ribeiro', '45', 'Jd. ArtrÃ³podes', 'Bauru', 'SP', NULL),
+(4, 1, 'Zenaide Silva e Silva', '546789123-48', 'zenaide@gmail.com', '11 4567 7894', '11 97875 4587', 'F', '45789135-7', 'Raquel Silva', 'JosÃ© Silva', '054789-789', 'Rua Van Gogh', '789', 'Jd. dos Artistas', 'SÃ£o Paulo', 'AC', NULL),
+(5, 1, 'MarÃ­lia', '357159789-03', 'marilia@gmail.com', '11 4250-7894', '11 9 9978-7845', 'F', '32.455.674-3', 'JanaÃ­na', 'Felisberto', '02540000', 'Rua Mardoqueu', '458', 'Vl. Nova Iorque', 'MarÃ­lia', 'SP', NULL),
+(6, 2, 'Astrovaldo', '357159789-03', 'astro@gmail.com', '11 2678-7894', '11 9 7845-7845', 'M', '37.843.367-2', 'Maria Joana', 'Marcos', '06812-100', 'Rua AraucÃ¡ria', '123', 'Pq.. Bristol', 'SÃ£o Paulo', 'SP', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,7 @@ CREATE TABLE `compra` (
   `id_usuario` int(11) NOT NULL,
   `fornecedor` varchar(200) NOT NULL,
   `descricaocompra` varchar(200) NOT NULL,
-  `dtcompra` datetime NOT NULL,
+  `dtcompra` date NOT NULL,
   `valorcompra` decimal(7,2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -81,17 +82,17 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`id_compra`, `id_fornecedor`, `id_mei`, `id_usuario`, `fornecedor`, `descricaocompra`, `dtcompra`, `valorcompra`) VALUES
-(12, 2, 2, 2, 'NestlÃ¨', 'Chocolate meio amargo 1kg', '2019-12-03 17:03:50', '49.99'),
-(9, 10, 1, 1, 'HP', 'Mouse Ã³ptico sem fio', '2019-12-03 16:30:44', '100.00'),
-(4, 4, 1, 1, 'Limpe mais - itens de limpeza', 'Ãgua SanitÃ¡ria 1L', '2019-11-29 16:35:18', '15.00'),
-(5, 8, 1, 1, 'Bonafonte', 'Fardo de 6L de Ã¡gua', '2019-11-29 16:36:01', '15.99'),
-(8, 12, 1, 1, 'Microsoft', 'Mouse e teclado sem fio em Ãºnico USB', '2019-12-02 13:46:01', '149.90'),
-(10, 9, 1, 1, 'Lenovo', 'Notebook Intel Core i3-6006U, 4GB RAM, HD 500 GB', '2019-12-03 16:32:26', '1500.00'),
-(11, 11, 1, 1, 'AutenticaÃ§Ã£o Digital', 'autenticaÃ§Ã£o para site', '2019-12-03 16:38:15', '200.00'),
-(13, 3, 2, 2, 'Rafaela Embalagens para alimentos', 'Embalagens de trufa pacote com 10', '2019-12-03 17:05:14', '5.00'),
-(14, 13, 2, 2, 'Brastemp', 'Freezer Vertical 400 litros', '2019-12-03 17:07:28', '2000.00'),
-(15, 13, 2, 2, 'Brastemp', 'Geladeira 400 litros', '2019-12-03 17:08:28', '2089.90'),
-(16, 2, 2, 2, 'NestlÃ¨', 'Chocolate ao leite 1kg', '2019-12-03 17:09:26', '45.50');
+(12, 2, 2, 2, 'NestlÃ¨', 'Chocolate meio amargo 1kg', '2019-12-03', '49.99'),
+(9, 10, 1, 1, 'HP', 'Mouse Ã³ptico sem fio', '2019-12-03', '100.00'),
+(4, 4, 1, 1, 'Limpe mais - itens de limpeza', 'Ãgua SanitÃ¡ria 1L', '2019-11-29', '15.00'),
+(5, 8, 1, 1, 'Bonafonte', 'Fardo de 6L de Ã¡gua', '2019-11-29', '15.99'),
+(8, 12, 1, 1, 'Microsoft', 'Mouse e teclado sem fio em Ãºnico USB', '2019-12-02', '149.90'),
+(10, 9, 1, 1, 'Lenovo', 'Notebook Intel Core i3-6006U, 4GB RAM, HD 500 GB', '2019-12-03', '1500.00'),
+(11, 11, 1, 1, 'AutenticaÃ§Ã£o Digital', 'autenticaÃ§Ã£o para site', '2019-12-03', '200.00'),
+(13, 3, 2, 2, 'Rafaela Embalagens para alimentos', 'Embalagens de trufa pacote com 10', '2019-12-03', '5.00'),
+(14, 13, 2, 2, 'Brastemp', 'Freezer Vertical 400 litros', '2019-12-03', '2000.00'),
+(15, 13, 2, 2, 'Brastemp', 'Geladeira 400 litros', '2019-12-03', '2089.90'),
+(16, 2, 2, 2, 'NestlÃ¨', 'Chocolate ao leite 1kg', '2019-12-03', '45.50');
 
 -- --------------------------------------------------------
 
@@ -110,15 +111,16 @@ CREATE TABLE `contrato` (
   `horarioservico` varchar(200) NOT NULL,
   `valorhora` varchar(20) DEFAULT NULL,
   `dtpagamento` varchar(20) NOT NULL,
-  `valorpagamento` decimal(7,2) NOT NULL
+  `valorpagamento` decimal(7,2) NOT NULL,
+  `dt` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `contrato`
 --
 
-INSERT INTO `contrato` (`id_contrato`, `id_usuario`, `id_mei`, `id_funcionario`, `nomefuncionario`, `iniciocontrato`, `fimcontrato`, `horarioservico`, `valorhora`, `dtpagamento`, `valorpagamento`) VALUES
-(2, 2, 2, 1, 'MÃ¡rcio Lucca Baptista', '2018-06-06', '2019-05-31', '8h - 18h', '5.42', '05', '954.00');
+INSERT INTO `contrato` (`id_contrato`, `id_usuario`, `id_mei`, `id_funcionario`, `nomefuncionario`, `iniciocontrato`, `fimcontrato`, `horarioservico`, `valorhora`, `dtpagamento`, `valorpagamento`, `dt`) VALUES
+(2, 2, 2, 1, 'MÃ¡rcio Lucca Baptista', '2018-06-06', '2019-05-31', '8h - 18h', '5.42', '05', '954.00', NULL);
 
 -- --------------------------------------------------------
 
@@ -132,7 +134,7 @@ CREATE TABLE `estoque` (
   `descricaoEstoque` varchar(200) NOT NULL,
   `preco` decimal(7,2) NOT NULL,
   `quantidade` decimal(7,2) NOT NULL,
-  `dt` datetime NOT NULL
+  `dt` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -140,9 +142,9 @@ CREATE TABLE `estoque` (
 --
 
 INSERT INTO `estoque` (`id_estoque`, `id_usuario`, `descricaoEstoque`, `preco`, `quantidade`, `dt`) VALUES
-(1, 1, 'ERP', '5000.00', '1.00', '2019-11-30 16:40:09'),
-(2, 1, 'E-commerce', '1000.00', '1.00', '2019-11-30 16:40:41'),
-(3, 1, 'Site', '500.00', '1.00', '2019-12-02 03:13:12');
+(1, 1, 'ERP', '5000.00', '1.00', '2019-11-30'),
+(2, 1, 'E-commerce', '1000.00', '1.00', '2019-11-30'),
+(3, 1, 'Site', '500.00', '1.00', '2019-12-02');
 
 -- --------------------------------------------------------
 
@@ -169,24 +171,25 @@ CREATE TABLE `fornecedor` (
   `numero` varchar(10) NOT NULL,
   `bairro` varchar(100) DEFAULT NULL,
   `cidade` varchar(200) DEFAULT NULL,
-  `uf` char(2) DEFAULT NULL
+  `uf` char(2) DEFAULT NULL,
+  `dt` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `fornecedor`
 --
 
-INSERT INTO `fornecedor` (`id_fornecedor`, `id_usuario`, `nome_razaosocial`, `cpf_cnpj`, `inscricaoestadual`, `inscricaomunicipal`, `email`, `tel`, `cel`, `sexo`, `rg`, `nome_mae`, `nome_pai`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `uf`) VALUES
-(4, 1, 'Limpe mais - itens de limpeza', '753159/0001', '753159/0001SP', '753159/0001-78', 'queijomolico@gmail.com', '11 4678-7894', '11 9 4545-7841', '', '', '', '', '05489-158', '', '1234', '', '', 'SP'),
-(2, 2, 'NestlÃ¨', '12348979/0001-25', '1234589/0001-25SP', '1234100/000-25SP', 'nestle@gmail.com', '11 2678-7812', '11 9 7845-7812', '', '', '', '', '02548-458', 'Rua CipÃ³', '98', 'Jd. Floresta', 'SÃ£o Caetano do Sul', 'SP'),
-(12, 1, 'Microsoft', '12348979/0001', '123456100/0001', '21234567890SP', 'microsoft@gmail.com', '11 4578-7894', '11 9 7845-2312', '', '', '', '', '04789-480', 'Av. Brigadeiro LuÃ­s AntÃ´nio', '5784', 'Pinheiros', 'SÃ£o Paulo', 'SP'),
-(6, 3, 'Forn de farinha de trigo', '12348979/0001', '123456782100', '123456782100SP', 'farinhadetrigo@gmail.com', '11 2678-7894', '11 9 7845-7845', 'F', '21.600.091-9', 'Dona Josefa', 'Seu Marinho', '06812-154', 'Rua BavÃ¡ria', '458', 'Jd. dos Perfumes', 'Porto Alegre', 'RS'),
-(7, 3, 'Forn de aÃ§Ãºcar cristal', '12348979/0001-25', '1234561000/0001', '123456100/0001SP', 'acucarcristal@gmail.com', '11 2678-0094', '11 97898-7894', 'M', '789435498-1', 'Maria Doce', 'JoÃ£o das Claras Neve', '02598-741', 'Rua Sancho PanÃ§a', '789', 'Jd. Gaivotas', 'SÃ£o Paulo', 'SP'),
-(8, 1, 'Bonafonte', '12348979/0001-25', '123456782100', '123456100/0001SP', 'chocoembarra@gmail.com', '11 2678-7894', '21 97898-7894', '', '', '', '', '06812-154', 'Av. AlcÃ¢ntara Machado', '5054', '', 'SÃ£o Paulo', 'SP'),
-(9, 1, 'Lenovo', '12348979/0001-25', '123456782100', '123456789/0001SP', 'lenovo@gmail.com', '11 6578-7894', '11 92678-5555', '', '', '', '', '06812-710', 'Rua Brasil', '45678', 'Jd. Planalto', 'Cotia', 'SP'),
-(10, 1, 'HP', '7894654/0001', '654987001', '646798321SP', 'hpbrasil@gmial.com', '11 4878-1579', '11 92678-5555', '', '', '', '', '04589-780', 'Rua GroenlÃ¢ndia', '4578', 'Jd. da Paz', 'SÃ£o Paulo', 'SP'),
-(11, 1, 'AutenticaÃ§Ã£o Digital', '4679871/0001', '564873130001', '164987321SP', 'autenticacaodigital@gmail.com', '11 6887-7894', '11 98745-7894', '', '', '', '', '07546-789', 'Rua Bela Cintra', '458', 'Bela Vista', 'SÃ£o Paulo', 'SP'),
-(13, 2, 'Brastemp', '12348979/0001-25', '123456100/0001', '123456789/0001SP', 'baste', '11 2678-7894', '11 9 7845-7845', '', '', '', '', '04579-702', 'Rua ConcÃ³rdia', '124', 'Jd. VitÃ³ria', 'SÃ£o Bernardo do Campo', 'SP');
+INSERT INTO `fornecedor` (`id_fornecedor`, `id_usuario`, `nome_razaosocial`, `cpf_cnpj`, `inscricaoestadual`, `inscricaomunicipal`, `email`, `tel`, `cel`, `sexo`, `rg`, `nome_mae`, `nome_pai`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `uf`, `dt`) VALUES
+(4, 1, 'Limpe mais - itens de limpeza', '753159/0001', '753159/0001SP', '753159/0001-78', 'queijomolico@gmail.com', '11 4678-7894', '11 9 4545-7841', '', '', '', '', '05489-158', '', '1234', '', '', 'SP', NULL),
+(2, 2, 'NestlÃ¨', '12348979/0001-25', '1234589/0001-25SP', '1234100/000-25SP', 'nestle@gmail.com', '11 2678-7812', '11 9 7845-7812', '', '', '', '', '02548-458', 'Rua CipÃ³', '98', 'Jd. Floresta', 'SÃ£o Caetano do Sul', 'SP', NULL),
+(12, 1, 'Microsoft', '12348979/0001', '123456100/0001', '21234567890SP', 'microsoft@gmail.com', '11 4578-7894', '11 9 7845-2312', '', '', '', '', '04789-480', 'Av. Brigadeiro LuÃ­s AntÃ´nio', '5784', 'Pinheiros', 'SÃ£o Paulo', 'SP', NULL),
+(6, 3, 'Forn de farinha de trigo', '12348979/0001', '123456782100', '123456782100SP', 'farinhadetrigo@gmail.com', '11 2678-7894', '11 9 7845-7845', 'F', '21.600.091-9', 'Dona Josefa', 'Seu Marinho', '06812-154', 'Rua BavÃ¡ria', '458', 'Jd. dos Perfumes', 'Porto Alegre', 'RS', NULL),
+(7, 3, 'Forn de aÃ§Ãºcar cristal', '12348979/0001-25', '1234561000/0001', '123456100/0001SP', 'acucarcristal@gmail.com', '11 2678-0094', '11 97898-7894', 'M', '789435498-1', 'Maria Doce', 'JoÃ£o das Claras Neve', '02598-741', 'Rua Sancho PanÃ§a', '789', 'Jd. Gaivotas', 'SÃ£o Paulo', 'SP', NULL),
+(8, 1, 'Bonafonte', '12348979/0001-25', '123456782100', '123456100/0001SP', 'chocoembarra@gmail.com', '11 2678-7894', '21 97898-7894', '', '', '', '', '06812-154', 'Av. AlcÃ¢ntara Machado', '5054', '', 'SÃ£o Paulo', 'SP', NULL),
+(9, 1, 'Lenovo', '12348979/0001-25', '123456782100', '123456789/0001SP', 'lenovo@gmail.com', '11 6578-7894', '11 92678-5555', '', '', '', '', '06812-710', 'Rua Brasil', '45678', 'Jd. Planalto', 'Cotia', 'SP', NULL),
+(10, 1, 'HP', '7894654/0001', '654987001', '646798321SP', 'hpbrasil@gmial.com', '11 4878-1579', '11 92678-5555', '', '', '', '', '04589-780', 'Rua GroenlÃ¢ndia', '4578', 'Jd. da Paz', 'SÃ£o Paulo', 'SP', NULL),
+(11, 1, 'AutenticaÃ§Ã£o Digital', '4679871/0001', '564873130001', '164987321SP', 'autenticacaodigital@gmail.com', '11 6887-7894', '11 98745-7894', '', '', '', '', '07546-789', 'Rua Bela Cintra', '458', 'Bela Vista', 'SÃ£o Paulo', 'SP', NULL),
+(13, 2, 'Brastemp', '12348979/0001-25', '123456100/0001', '123456789/0001SP', 'baste', '11 2678-7894', '11 9 7845-7845', '', '', '', '', '04579-702', 'Rua ConcÃ³rdia', '124', 'Jd. VitÃ³ria', 'SÃ£o Bernardo do Campo', 'SP', NULL);
 
 -- --------------------------------------------------------
 
@@ -217,16 +220,17 @@ CREATE TABLE `funcionario` (
   `numeroconta` varchar(20) DEFAULT NULL,
   `tipoconta` varchar(50) DEFAULT NULL,
   `nomebanco` varchar(50) DEFAULT NULL,
-  `agenciabancaria` varchar(20) DEFAULT NULL
+  `agenciabancaria` varchar(20) DEFAULT NULL,
+  `dt` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `funcionario`
 --
 
-INSERT INTO `funcionario` (`id_funcionario`, `id_usuario`, `nome`, `cpf`, `email`, `tel`, `cel`, `sexo`, `rg`, `nome_mae`, `nome_pai`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `uf`, `ctps`, `pispasep`, `numeroconta`, `tipoconta`, `nomebanco`, `agenciabancaria`) VALUES
-(1, 2, 'MÃ¡rcio Lucca Baptista', '341.596.988-67', 'marciobaptista@gmail.com.br', '(11) 3921-8376', '(11) 99769-3550', 'M', '37.425.037-6', 'Heloise Malu Silvana', 'Roberto Felipe Bryan Baptista', '02677-020', 'Rua ClÃ¡udio Gonzaga de Souza', '325', 'Jardim Peri', 'SÃ£o Paulo', 'SP', '4567-789', '478.47217.76-7', '13242729-6', 'Corrente', 'ItaÃº', '0640'),
-(3, 2, 'LetÃ­cia Gabriela Paes', '848.681.318-26', 'leticiagabrielapaes@gmail.com.br', '(11) 2596-5371', '(11) 98482-5660', 'F', '34.652.388-6', 'Alessandra Raimunda', 'Oliver CÃ©sar Ian Paes', '08452-290', 'Rua Lopes de Cascais', '263', 'Jardim Augusta', 'SÃ£o Paulo', 'SP', '45678-70', '756.75066.19-2', '09344145-7', 'Corrente', 'Santander', '4728');
+INSERT INTO `funcionario` (`id_funcionario`, `id_usuario`, `nome`, `cpf`, `email`, `tel`, `cel`, `sexo`, `rg`, `nome_mae`, `nome_pai`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `uf`, `ctps`, `pispasep`, `numeroconta`, `tipoconta`, `nomebanco`, `agenciabancaria`, `dt`) VALUES
+(1, 2, 'MÃ¡rcio Lucca Baptista', '341.596.988-67', 'marciobaptista@gmail.com.br', '(11) 3921-8376', '(11) 99769-3550', 'M', '37.425.037-6', 'Heloise Malu Silvana', 'Roberto Felipe Bryan Baptista', '02677-020', 'Rua ClÃ¡udio Gonzaga de Souza', '325', 'Jardim Peri', 'SÃ£o Paulo', 'SP', '4567-789', '478.47217.76-7', '13242729-6', 'Corrente', 'ItaÃº', '0640', NULL),
+(3, 2, 'LetÃ­cia Gabriela Paes', '848.681.318-26', 'leticiagabrielapaes@gmail.com.br', '(11) 2596-5371', '(11) 98482-5660', 'F', '34.652.388-6', 'Alessandra Raimunda', 'Oliver CÃ©sar Ian Paes', '08452-290', 'Rua Lopes de Cascais', '263', 'Jardim Augusta', 'SÃ£o Paulo', 'SP', '45678-70', '756.75066.19-2', '09344145-7', 'Corrente', 'Santander', '4728', NULL);
 
 -- --------------------------------------------------------
 
@@ -280,7 +284,7 @@ CREATE TABLE `servico` (
   `descricaoservico` varchar(200) NOT NULL,
   `precoservico` decimal(7,2) NOT NULL,
   `quantidadeservico` decimal(7,2) NOT NULL,
-  `dt` datetime NOT NULL
+  `dt` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -288,10 +292,10 @@ CREATE TABLE `servico` (
 --
 
 INSERT INTO `servico` (`id_servico`, `id_usuario`, `descricaoservico`, `precoservico`, `quantidadeservico`, `dt`) VALUES
-(1, 1, 'Cortar grama', '20.00', '1.00', '2019-12-02 02:32:38'),
-(2, 1, 'Cortar cabelo', '20.00', '1.00', '2019-12-02 02:33:46'),
-(5, 1, 'ManutenÃ§Ã£o grande do Sistema ERP', '1000.00', '1.00', '2019-12-03 16:16:27'),
-(4, 1, 'ManutenÃ§Ã£o pequena do Sistema ERP', '100.00', '1.00', '2019-12-03 16:13:52');
+(1, 1, 'Cortar grama', '20.00', '1.00', '2019-12-02'),
+(2, 1, 'Cortar cabelo', '20.00', '1.00', '2019-12-02'),
+(5, 1, 'ManutenÃ§Ã£o grande do Sistema ERP', '1000.00', '1.00', '2019-12-03'),
+(4, 1, 'ManutenÃ§Ã£o pequena do Sistema ERP', '100.00', '1.00', '2019-12-03');
 
 -- --------------------------------------------------------
 
@@ -319,6 +323,35 @@ INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `email_usuario`, `senha_usu
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `vendaproduto`
+--
+
+CREATE TABLE `vendaproduto` (
+  `id_venda_produto` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_mei` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_estoque` int(11) NOT NULL,
+  `descricaoestoque` varchar(200) NOT NULL,
+  `valorunitario` decimal(7,2) NOT NULL,
+  `qtd` decimal(7,2) NOT NULL,
+  `nomecliente` varchar(200) NOT NULL,
+  `formapgto` varchar(50) NOT NULL,
+  `dtvenda` date NOT NULL,
+  `valortotal` decimal(7,2) NOT NULL,
+  `situacao` varchar(12) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `vendaproduto`
+--
+
+INSERT INTO `vendaproduto` (`id_venda_produto`, `id_usuario`, `id_mei`, `id_cliente`, `id_estoque`, `descricaoestoque`, `valorunitario`, `qtd`, `nomecliente`, `formapgto`, `dtvenda`, `valortotal`, `situacao`) VALUES
+(1, 1, 1, 5, 1, 'ERP', '5000.00', '2.00', 'MarÃ­lia', 'dinheiro', '2019-12-04', '10000.00', 'CANCELADA');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `vendaservico`
 --
 
@@ -333,7 +366,7 @@ CREATE TABLE `vendaservico` (
   `qtd` decimal(7,2) NOT NULL,
   `nomecliente` varchar(200) NOT NULL,
   `formapgto` varchar(50) NOT NULL,
-  `dtvenda` datetime NOT NULL,
+  `dtvenda` date NOT NULL,
   `valortotal` decimal(7,2) NOT NULL,
   `situacao` varchar(12) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -343,11 +376,11 @@ CREATE TABLE `vendaservico` (
 --
 
 INSERT INTO `vendaservico` (`id_venda_servico`, `id_usuario`, `id_mei`, `id_cliente`, `id_servico`, `descricaoservico`, `valorunitario`, `qtd`, `nomecliente`, `formapgto`, `dtvenda`, `valortotal`, `situacao`) VALUES
-(1, 1, 1, 2, 2, 'Cortar cabelo', '20.00', '2.00', 'Sebastião', 'Dinheiro', '2019-12-02 17:33:29', '40.00', 'CANCELADA'),
-(2, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '5.00', 'LucrÃ©cia', 'dinheiro', '2019-12-02 18:34:33', '100.00', 'CANCELADA'),
-(3, 1, 1, 5, 1, 'Cortar grama', '20.00', '5.00', 'MarÃ­lia', 'dinheiro', '2019-12-03 22:38:56', '100.00', 'REALIZADA'),
-(4, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '4.00', 'LucrÃ©cia', 'dinheiro', '2019-12-03 22:58:30', '80.00', 'REALIZADA'),
-(5, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '5.00', 'LucrÃ©cia', 'cartao', '2019-12-03 23:33:27', '100.00', 'REALIZADA');
+(1, 1, 1, 2, 2, 'Cortar cabelo', '20.00', '2.00', 'Sebastião', 'Dinheiro', '2019-12-02', '40.00', 'CANCELADA'),
+(2, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '5.00', 'LucrÃ©cia', 'dinheiro', '2019-12-02', '100.00', 'CANCELADA'),
+(3, 1, 1, 5, 1, 'Cortar grama', '20.00', '5.00', 'MarÃ­lia', 'dinheiro', '2019-12-03', '100.00', 'REALIZADA'),
+(4, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '4.00', 'LucrÃ©cia', 'dinheiro', '2019-12-03', '80.00', 'REALIZADA'),
+(5, 1, 1, 1, 2, 'Cortar cabelo', '20.00', '5.00', 'LucrÃ©cia', 'cartao', '2019-12-03', '100.00', 'REALIZADA');
 
 --
 -- Indexes for dumped tables
@@ -420,6 +453,16 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
+-- Indexes for table `vendaproduto`
+--
+ALTER TABLE `vendaproduto`
+  ADD PRIMARY KEY (`id_venda_produto`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_mei` (`id_mei`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_estoque` (`id_estoque`);
+
+--
 -- Indexes for table `vendaservico`
 --
 ALTER TABLE `vendaservico`
@@ -478,6 +521,11 @@ ALTER TABLE `servico`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `vendaproduto`
+--
+ALTER TABLE `vendaproduto`
+  MODIFY `id_venda_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `vendaservico`
 --

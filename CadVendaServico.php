@@ -5,7 +5,7 @@ include('Conexao.php');
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>  
-<title>Go! MEI - Cadastrar Compra</title>	
+<title>Go! MEI - Cadastrar Venda Serviço</title>	
 <style type="text/css">
       .carregando{
         color:#ff0000;
@@ -23,7 +23,7 @@ include('Conexao.php');
 
 <div class="header">
 	<div class="conexao">
-	<a  href="PesquisaCompra.php"><b>Voltar</b></a>
+	<a  href="PesquisaVendaServico.php"><b>Voltar</b></a>
  	
  	</div>
 
@@ -83,7 +83,7 @@ include('Conexao.php');
   </div>
 
   <div class="col-6 col-s-9">
-    <h2>Cadastrar Venda</h2>
+    <h2>Cadastrar Venda de Serviço</h2>
     <a href="PesquisaVendaServico.php"> Pesquisar Vendas de Serviços </a>
     <?php
       if( isset($_SESSION['msg']) ) {
@@ -147,9 +147,9 @@ include('Conexao.php');
 
           <label for="valortotal"><b>Valor Total</b></label>          
           <input type="text" placeholder="" id="result" name="result" required></input>
-
+          <input type="button" value="calcular total" onclick="calcular();"/>
         <hr>
-        <input type="button" value="calcular total" onclick="calcular();"/>
+        
        <button type="submit" name="SendPesqUser" class="registerbtn"  value="Salvar">Salvar</button>
        </div>
     </form>
@@ -166,7 +166,7 @@ include('Conexao.php');
           $('#id_sub_categoria').hide();
           $('.carregando').show();
           $.getJSON('sub_categorias_post.php?search=',{id_categoria: $(this).val(), ajax: 'true'}, function(j){
-            var options = '<option value="">Escolha Subcategoria</option>'; 
+            var options = '<option value="">Escolha o valor</option>'; 
             for (var i = 0; i < j.length; i++) {
               options += '<option value="' + j[i].id + '">' + j[i].nome_sub_categoria + '</option>';
             } 
@@ -174,7 +174,7 @@ include('Conexao.php');
             $('.carregando').hide();
           });
         } else {
-          $('#id_sub_categoria').html('<option value="">– Escolha Subcategoria –</option>');
+          $('#id_sub_categoria').html('<option value="">– Escolha o valor –</option>');
         }
       });
     });

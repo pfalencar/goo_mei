@@ -111,7 +111,7 @@ $resultado_mei = mysqli_query($conexao, $result_mei);
 				<input type=text name=nomecompleto value="<?php echo $row_mei['nomecompleto']; ?>"></p>
 
 			<p>Email: 
-				<input type=text name=email value="<?php echo $row_mei['email']; ?>"></p>
+				<input type=email name=email value="<?php echo $row_mei['email']; ?>"></p>
 
 			<p>Razão Social: 
 				<input type=text name=razaosocial value="<?php echo $row_mei['razaosocial']; ?>"></p>

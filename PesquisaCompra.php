@@ -81,7 +81,7 @@ include("Conexao.php");
   <div class="col-6 col-s-9">
   <h1>Aquisições</h1>
  <p><b>O cadastro de compras traz eficiência na apuração dos dados, diminuindo erros e falhas no controle, e traz também agilidade, na hora da contabilização. Efetue agora o cadastro de uma nova aquisição! </b></p><br>
- <a href="CadCompra.php" class="button"><b>+ Adicionar</b></a>
+ <a href="CadCompra.php" class="button"><b>Adicionar</b></a>
  <hr>
 
  <?php
@@ -145,8 +145,25 @@ include("Conexao.php");
       </table>
         <br><br>
         <br><br>
+        <br><br>
+        
+      </div>
 
-        <div class="footer">
+
+  <!--<div class="col-3 col-s-12">
+    <div class="aside">
+      <h2>What?</h2>
+      <p>Chania is a city on the island of Crete.</p>
+      <h2>Where?</h2>
+      <p>Crete is a Greek island in the Mediterranean Sea.</p>
+      <h2>How?</h2>
+      <p>You can reach Chania airport from all over Europe.</p>
+    </div>
+  </div>-->
+
+</div>
+
+<div class="footer">
   <p>Copyright © 2019 Go! MEI</p>
 </div>
 

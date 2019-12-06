@@ -83,7 +83,7 @@ include("Conexao.php");
   <p><b>O cadastro de Fornecedor traz eficiência na apuração dos dados, diminuindo erros e falhas no controle, e traz também agilidade, na hora da Compra. Efetue agora o cadastro de um novo Fornecedor! </b></p><br>
 
 
- <a href="CadFuncionario.php" class="button"><b>+ Adicionar</b></a>
+ <a href="CadFuncionario.php" class="button"><b>Adicionar</b></a>
  <hr>
 
   <?php
@@ -178,6 +178,7 @@ include("Conexao.php");
     
       </table>
       <br><br>
+        <br><br>
         <br><br>
 
 

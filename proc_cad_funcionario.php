@@ -51,7 +51,7 @@ echo "agenciabancaria: $agenciabancaria <br>";
 */
 
 
-$result_funcionario = "INSERT INTO funcionario (id_usuario,nome, cpf, email, tel, cel, sexo, rg, nome_mae, nome_pai, cep, logradouro, numero, bairro, cidade, uf, ctps, pispasep, numeroconta, tipoconta, nomebanco, agenciabancaria) VALUES ('$id_usuario','$nome', '$cpf', '$email', '$telefone', '$celular', '$sexo', '$rg', '$nomemae', '$nomepai', '$cep', '$logradouro', '$numero', '$bairro', '$cidade', '$uf', '$ctps', '$pispasep', '$numeroconta', '$tipoconta', '$nomebanco', '$agenciabancaria')";
+$result_funcionario = "INSERT INTO funcionario (id_usuario,nome, cpf, email, tel, cel, sexo, rg, nome_mae, nome_pai, cep, logradouro, numero, bairro, cidade, uf, ctps, pispasep, numeroconta, tipoconta, nomebanco, agenciabancaria,dt) VALUES ('$id_usuario','$nome', '$cpf', '$email', '$telefone', '$celular', '$sexo', '$rg', '$nomemae', '$nomepai', '$cep', '$logradouro', '$numero', '$bairro', '$cidade', '$uf', '$ctps', '$pispasep', '$numeroconta', '$tipoconta', '$nomebanco', '$agenciabancaria',NOW())";
 
 $resultado_funcionario = mysqli_query($conexao, $result_funcionario);
 

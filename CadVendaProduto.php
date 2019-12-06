@@ -4,28 +4,28 @@ include('Conexao.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-	<head>
-		<title>Go! MEI - Venda Produto</title>	
-		<style type="text/css">
-		  .carregando{
-			color:#ff0000;
-			display:none;
-		  }
-		</style>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="styles/styles.css"/>
-		<link rel="stylesheet" type="text/css" href="styles/forms.css"/>
-	</head>
+<head>  
+<title>Go! MEI - Cadastrar Venda Produto</title> 
+<style type="text/css">
+      .carregando{
+        color:#ff0000;
+        display:none;
+      }
+    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+<link rel="stylesheet" type="text/css" href="styles/forms.css"/>
+</head>
 
 <body>
 
 <div class="header">
-	<div class="conexao">
-	<a  href="PesquisaCompra.php"><b>Voltar</b></a>
- 	
- 	</div>
+  <div class="conexao">
+  <a  href="PesquisaVendaProduto.php"><b>Voltar</b></a>
+  
+  </div>
 
    <a class="logo" href="painel.php"><h1>Go! MEI</h1></a>
   
@@ -34,12 +34,12 @@ include('Conexao.php');
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-	<li class="dropdown">
+  <li class="dropdown">
     <a href="" class="dropbtn">Catálogo</a>
     <div class="dropdown-content">
        <a href="PesquisaEstoque.php">Estoque</a>
-	  <a href="PesquisaServico.php">Serviços</a>
-	
+    <a href="PesquisaServico.php">Serviços</a>
+  
       
     </div>
   </li>
@@ -47,14 +47,14 @@ include('Conexao.php');
     <a href="" class="dropbtn">Vendas</a>
     <div class="dropdown-content">
       <a href="PesquisaVendaServico.php">Vendas de Serviços</a>
-	 <a href="PesquisaVendaProduto.php">Vendas de Produtos</a>
+   <a href="PesquisaVendaProduto.php">Vendas de Produtos</a>
       <a href="PesquisaCliente.php">Clientes</a>
       </div>
   </li>
    <li class="dropdown">
     <a href="" class="dropbtn">Compras</a>
     <div class="dropdown-content">
-	  <a href="PesquisaCompra.php">Compras</a>
+    <a href="PesquisaCompra.php">Compras</a>
       <a href="PesquisaFornecedor.php">Fornecedores</a>
          
     </div>
@@ -63,7 +63,7 @@ include('Conexao.php');
   <li class="dropdown">
     <a href="" class="dropbtn">Funcionários</a>
     <div class="dropdown-content">
-	  <a href="PesquisaFuncionario.php">Funcionários</a>
+    <a href="PesquisaFuncionario.php">Funcionários</a>
       <a href="PesquisaContrato.php">Contratos</a>
          
     </div>
@@ -75,7 +75,7 @@ include('Conexao.php');
     <a href="" class="dropbtn">Configurações</a>
     <div class="dropdown-content">
       <a href="edit_mei.php">Meus Dados</a>
-	  <a href="usuario.php">Usuário</a>
+    <a href="usuario.php">Usuário</a>
       <a href="logout.php">Sair</a>
     </div>
   </li>
@@ -84,6 +84,7 @@ include('Conexao.php');
 
   <div class="col-6 col-s-9">
     <h2>Cadastrar Venda de Produto</h2>
+    <a href="PesquisaVendaProduto.php"> Pesquisar Vendas de Produto </a>
     <?php
       if( isset($_SESSION['msg']) ) {
         echo $_SESSION['msg'];
@@ -92,12 +93,13 @@ include('Conexao.php');
     ?>
 
     <?php
+
       $idusuario = $_SESSION['id_usuario'];    
-      $ver = 2; 
+     // $ver = 2; 
         
     ?>
 
-    <form action="" method="POST">
+    <form action="proc_cad_vendas_produto.php" method="POST">
       <div class="container">
   
         <label>Produto:</label>
@@ -110,13 +112,13 @@ include('Conexao.php');
             echo '<option value="'.$row_cat_post['id_estoque'].'">'.$row_cat_post['descricaoEstoque'].'</option>';
           }
         ?>
-		</select><br><br>
+      </select><br><br>
 
-        <label>Valor Unitário:</label>
-	    <span class="carregando">Aguarde, carregando...</span>
-	    <select name="id_sub_categoria2" id="id_sub_categoria">
-          <option  value="">Escolha o valor</option>
-        </select><br><br>
+          <label>Valor Unitário:</label>
+      <span class="carregando">Aguarde, carregando...</span>
+      <select name="id_sub_categoria2" id="id_sub_categoria">
+        <option  value="">Escolha o valor</option>
+      </select><br><br>
       
           <label for="quantidade"><b>Quantidade</b></label>
           <input type="text" id="qntd"  name="quantidade"  required/> 
@@ -138,34 +140,19 @@ include('Conexao.php');
 
               
           <label for="finalizadora"><b>Finalizadora</b></label>
-            <select name="pgmento" required="required">
+            <select name="pagamento" required="required">
               <option value="dinheiro"><b>Dinheiro</b></option>
               <option value="cartao"><b>Cartão</b></option>
             </select>
 
-          <label for="valortotal"><b>Valor Total</b></label>
-          
+          <label for="valortotal"><b>Valor Total</b></label>          
           <input type="text" placeholder="" id="result" name="result" required></input>
-
+          <input type="button" value="calcular total" onclick="calcular();"/>
         <hr>
-        <input type="button" value="calcular total" onclick="calcular();"/>
+        
        <button type="submit" name="SendPesqUser" class="registerbtn"  value="Salvar">Salvar</button>
        </div>
     </form>
-    <?php
-
-      $SendPesqUser = filter_input(INPUT_POST, 'SendPesqUser', FILTER_SANITIZE_STRING);
-
-      if ($SendPesqUser) {
-
-		$estoque = $_POST['id_categoria'];
-		$qntd = $_POST['quantidade'];
-		$vt = $_POST['result'];
-	  }
-
-
-
-    ?>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
@@ -179,7 +166,7 @@ include('Conexao.php');
           $('#id_sub_categoria').hide();
           $('.carregando').show();
           $.getJSON('sub_categorias_post_produto.php?search=',{id_categoria: $(this).val(), ajax: 'true'}, function(j){
-            var options = '<option value="">Escolha Subcategoria</option>'; 
+            var options = '<option value="">Escolha o valor</option>'; 
             for (var i = 0; i < j.length; i++) {
               options += '<option value="' + j[i].id + '">' + j[i].nome_sub_categoria + '</option>';
             } 
@@ -187,39 +174,42 @@ include('Conexao.php');
             $('.carregando').hide();
           });
         } else {
-          $('#id_sub_categoria').html('<option value="">– Escolha Subcategoria –</option>');
+          $('#id_sub_categoria').html('<option value="">– Escolha o valor –</option>');
         }
       });
     });
     </script>
+
     <script type="text/javascript">
       function calcular(){
       var valor1 = parseFloat(document.getElementById('id_sub_categoria').value, 10);
       var valor2 = parseFloat(document.getElementById('qntd').value, 10);
       document.getElementById('result').value = valor1 * valor2;
-      
-}
+      }
     </script>
 
     </div>
 
-<div class="col-3 col-s-12">
+<!--<div class="col-3 col-s-12">
     <div class="container">
+      <form action="proc_cad_vendas_servico.php" method="POST">
       <table id="customers">
         <tr>
-            <th>Produto</th>
+            <th>Serviço</th>
             <th>Quantidade</th>
             <th>Valor</th>
           </tr>
 
           <?php
 
+          /*
+
           //verificando se clicou no botao
         if ($SendPesqUser) {
     
             echo 
               "<tr>
-                <td>" .$estoque. "</td>
+                <td>" .$servico. "</td>
                 <td>" . $qntd. "</td>
                 <td>" . $vt . "</td>
               </tr>
@@ -236,17 +226,33 @@ include('Conexao.php');
               ";
 
             }
+
+            */
         
           ?>
 
       
     
       </table>
-      <form action="proc_cad_venda_estoque.php" method="POST">
+      
         <button type="submit" name="enviar" value="salvar">FINALIZAR</button>
       </form>
     </div>
-  </div>
+  </div>-->
+
+</div>
+
+
+  <!--<div class="col-3 col-s-12">
+    <div class="aside">
+      <h2>What?</h2>
+      <p>Chania is a city on the island of Crete.</p>
+      <h2>Where?</h2>
+      <p>Crete is a Greek island in the Mediterranean Sea.</p>
+      <h2>How?</h2>
+      <p>You can reach Chania airport from all over Europe.</p>
+    </div>
+  </div>-->
 
 </div>
 

@@ -84,7 +84,7 @@ include("Conexao.php");
    <p><b>O cadastro de cliente traz eficiência na apuração dos dados, diminuindo erros e falhas no controle, e traz também agilidade, na hora da Venda. Efetue agora o cadastro de um novo Cliente! </b></p><br>
 
 
- <a href="CadCliente.php" class="button"><b>+ Adicionar</b></a>
+ <a href="CadCliente.php" class="button"><b>Adicionar</b></a>
  <hr>
 
   <?php
@@ -169,6 +169,7 @@ include("Conexao.php");
 		
 			</table>
 
+				<br><br>
 				<br><br>
 				<br><br>
 

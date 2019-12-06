@@ -52,13 +52,13 @@ session_start();
         <br>
 
     <label for="nome"><b>Nome</b></label>
-    <input type="text" placeholder="Informe seu eome" name="nome" required>
+    <input type="text" placeholder="Informe seu nome" name="nome" required>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Informe seu email" name="email" required>
+    <input type="email" placeholder="Informe seu email" name="email" required>
 
     <label for="senha"><b>Senha</b></label>
-    <input type="password" placeholder="Informe sua senha" name="senha" required>
+    <input type="password" placeholder="Informe sua senha" name="senha" minlength="8" required>
     <hr>
     <p>Ao criar uma conta, você concorda com nossos <a href="#">Termos e Privacidade</a>.</p>
 

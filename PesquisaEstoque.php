@@ -142,13 +142,10 @@ include("Conexao.php");
 		
 			</table>
 				<br><br>
-				<br><br>		
-
-
-
-
-
-</div>
+        <br><br>
+        <br><br>
+        
+      </div>
 
 
   <!--<div class="col-3 col-s-12">
